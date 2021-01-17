@@ -29,6 +29,7 @@ void leer(tListaCredenciales& Credenciales);
 bool comprobar(string usuario, tListaCredenciales &Credendiales, int contador);
 
 int main() {
+    system("color 0A");
     login();
     return 0;
 }
@@ -62,14 +63,15 @@ void menu() {
 }
 void leer(tListaCredenciales& Credenciales) {
 
-    ifstream file;
+    ifstream fileUsers, filePasswords;
     bool fin = false;
-    file.open("usuarios.txt");
-    if (file.is_open()) {
+    fileUsers.open("usuarios.txt");    
+    filePasswords.open("contraseñas.txt");
+    if (fileUsers.is_open() && filePasswords.is_open()) {
         do {
             for (int i = 0; i < 10; i++) {
-                file >> Credenciales[i].usuario;
-                file >> Credenciales[i].contraseña;
+                fileUsers >> Credenciales[i].usuario;
+                filePasswords >> Credenciales[i].contraseña;
             }
             fin = true;
         } while (fin = false);
