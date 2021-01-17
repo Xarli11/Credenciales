@@ -91,7 +91,7 @@ bool comprobar(string usuario, tListaCredenciales& Credenciales, int contador) {
                     numUsuario = j;
                 }
             }
-            }while (encontradoUsuario == false || j < 10);
+            }while (encontradoUsuario == false && j < 10);
         if (encontradoUsuario == true) {
             cout << "Nombre de usuario correcto, por favor ingrese su contrasena:" << endl;
             cin >> pass;
@@ -101,7 +101,6 @@ bool comprobar(string usuario, tListaCredenciales& Credenciales, int contador) {
             if (encontradoContraseña == true) {
                 cout << endl;
                 cout << "Contrasena correcta, bienvenido, sera redirigido a la aplicacion" << endl;
-                //menu();
                 system("pause>null");
                 exit(0);
             }
