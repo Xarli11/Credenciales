@@ -14,30 +14,36 @@ using namespace std;
 
 
 /*Estructuras y Constantes Globales*/
-
+const int MAX_CREDENCIALES=10;
+const int MAX_USERS=100;
 typedef struct {
     string usuario;
     string contraseña;
 }tCredenciales;
-typedef tCredenciales tListaCredenciales[10];
-
+typedef tCredenciales tListaCredenciales[MAX_CREDENCIALES];
+/*Lista de usuarios y contraseñas guardadas*/
+typedef tCredenciales tListaUsuarios[MAX_USERS];
 /*Este es el menu de Usuarios y Contraseñas*/
 void login();
 
 void menu();
 void leer(tListaCredenciales& Credenciales);
 bool comprobar(string usuario, tListaCredenciales &Credendiales, int contador);
+void leer2(tListaUsuarios& Usuarios);
+void menu2(tListaUsuarios& Usuarios);
+void mostrarCredenciales(tListaUsuarios Usuarios);
 
 int main() {
-    system("color 0A");
-    login();
+    menu();
     return 0;
 }
 
 void login() {
     string nombre;
     tListaCredenciales credenciales;
+    tListaUsuarios usuarios;
     leer(credenciales);
+    leer2(usuarios);
     int i;
     for (i= 1; i < 4; i++) {
         system("cls");
@@ -59,8 +65,10 @@ void login() {
 }
 
 void menu() {
-
+    system("color 0A");
+    login();
 }
+
 void leer(tListaCredenciales& Credenciales) {
 
     ifstream fileUsers, filePasswords;
@@ -69,7 +77,7 @@ void leer(tListaCredenciales& Credenciales) {
     filePasswords.open("contraseñas.txt");
     if (fileUsers.is_open() && filePasswords.is_open()) {
         do {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < MAX_CREDENCIALES; i++) {
                 fileUsers >> Credenciales[i].usuario;
                 filePasswords >> Credenciales[i].contraseña;
             }
@@ -127,5 +135,48 @@ bool comprobar(string usuario, tListaCredenciales& Credenciales, int contador) {
             cout << "Ha realizado 3 intentos, por seguridad el programa se cerrara..." << endl;
             system("pause>null");
             exit(0);
+        }
+    }
+void leer2(tListaUsuarios& Usuarios) {
+
+    ifstream fileUsers, filePasswords;
+    bool fin = false;
+    fileUsers.open("usuariosSaved.txt");
+    filePasswords.open("contraseñasSaved.txt");
+    if (fileUsers.is_open() && filePasswords.is_open()) {
+        do {
+            for (int i = 0; i < MAX_USERS; i++) {
+                fileUsers >> Usuarios[i].usuario;
+                filePasswords >> Usuarios[i].contraseña;
+            }
+            fin = true;
+        } while (fin = false);
+    }
+    else {
+        cout << "No se ha podido abrir el archivo para comprobar los usuarios" << endl;
+    }
+}
+void menu2(tListaUsuarios &Usuarios) {
+    int opcion = -1;
+    system("cls");
+    cout << "---------------------" << endl;
+    cout << "-                   -" << endl;
+    cout << "-        MENU       -" << endl;
+    cout << "-                   -" << endl;
+    cout << "---------------------" << endl;
+    cout << "1.Mostrar todas las contraseñas y usuarios" << endl;
+    cout << "Elija una opcion: ";
+    cin >> opcion;
+    switch (opcion) {
+    case 1:
+        mostrarCredenciales(Usuarios);
+        break;
+
+    };
+}
+
+    void mostrarCredenciales(tListaUsuarios Usuarios) {
+        for (int i = 0; i < MAX_USERS;) {
+            cout
         }
     }

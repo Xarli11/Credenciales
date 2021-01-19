@@ -1,4 +1,4 @@
 ﻿  main.cpp
-E:\Proyectos\Credenciales\Credenciales\main.cpp(88,15): warning C4101: 'k': variable local sin referencia
-E:\Proyectos\Credenciales\Credenciales\main.cpp(131): warning C4715: 'comprobar': no todas las rutas de acceso de control devuelven un valor
+E:\Proyectos\Credenciales\Credenciales\main.cpp(89,15): warning C4101: 'k': variable local sin referencia
+E:\Proyectos\Credenciales\Credenciales\main.cpp(132): warning C4715: 'comprobar': no todas las rutas de acceso de control devuelven un valor
   Credenciales.vcxproj -> E:\Proyectos\Credenciales\Credenciales\Debug\Credenciales.exe
